@@ -12,7 +12,7 @@ namespace Blackjack
     /// Single deck
     /// No double down or split after split
     /// Blackjack pays 3 to 2 and no insurance or even money
-    /// Dealer hits soft 17
+    /// Dealer stands on all 17s
     /// </summary>
     public class BlackjackGame
     {
@@ -190,8 +190,8 @@ namespace Blackjack
                         Console.WriteLine("Dealer's hand:\n" + dealerHand.DisplayHand(false) + "\n");
                         Thread.Sleep(2000);
 
-                        while (dealerHand.HandValue() < 17 || (dealerHand.HandSize() == 2 && dealerHand.HandValue() == 17 && (dealerCard1.GetRank() == Rank.ACE || dealerCard2.GetRank() == Rank.ACE)))
-                        { //keep hitting until 17 or higher. Dealer hits soft 17.
+                        while (dealerHand.HandValue() < 17)
+                        { //keep hitting until 17 or higher.
                             Card dealerHitCard = deck.DealCard();
                             Console.WriteLine("Dealer hits a " + dealerHitCard + "\n");
                             dealerHand.AddCard(dealerHitCard);
